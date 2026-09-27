@@ -1,0 +1,377 @@
+/* ============================================================
+   Cherry AI widget styles
+   Scoped, prefixed with `cherry-` to avoid any collisions.
+   ============================================================ */
+
+/* ---------- Floating button ---------- */
+
+.cherry-fab {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  width: 60px;
+  height: 60px;
+  z-index: 70;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: bottom 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+  animation: cherry-float 5s ease-in-out infinite;
+}
+
+.cherry-fab:hover {
+  transform: scale(1.06);
+}
+.cherry-fab:active {
+  transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+  .cherry-fab {
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 66px;
+    height: 66px;
+  }
+}
+
+/* Lifted above the hero's contact button so nothing important is covered. */
+.cherry-fab-lifted {
+  bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 768px) {
+  .cherry-fab-lifted {
+    bottom: 7.25rem;
+  }
+}
+
+.cherry-fab-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #4c6fff 0%, #7621b0 55%, #b600a8 100%);
+  box-shadow: 0 10px 30px rgba(76, 111, 255, 0.35), 0 0 30px rgba(182, 0, 168, 0.5),
+    0 0 46px rgba(94, 118, 255, 0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: cherry-glow 3.2s ease-in-out infinite;
+  overflow: hidden;
+}
+
+/* The uploaded Cherry AI robot logo — fills the circular core untouched. */
+.cherry-fab-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.cherry-fab-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 2px solid rgba(182, 0, 168, 0.55);
+  animation: cherry-ping 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.cherry-fab-dot {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 13px;
+  height: 13px;
+  border-radius: 9999px;
+  background: #22c55e;
+  border: 2.5px solid #0c0c0c;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.95);
+  z-index: 2;
+}
+
+/* Permanent speech-bubble tooltip — always visible, no hover needed. */
+.cherry-tip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  right: 0;
+  display: block;
+  width: max-content;
+  max-width: min(320px, calc(100vw - 5.5rem));
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: rgba(15, 15, 20, 0.88);
+  border: 1px solid rgba(215, 226, 234, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #d7e2ea;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  white-space: normal;
+  text-align: center;
+  box-shadow: 0 0 24px rgba(118, 33, 176, 0.35),
+    0 0 44px rgba(76, 111, 255, 0.18), 0 10px 30px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Speech-bubble arrow pointing at the AI Assistant button. */
+.cherry-tip-arrow {
+  position: absolute;
+  bottom: -5.5px;
+  right: 26px;
+  display: block;
+  width: 11px;
+  height: 11px;
+  background: rgba(15, 15, 20, 0.95);
+  border-right: 1px solid rgba(215, 226, 234, 0.18);
+  border-bottom: 1px solid rgba(215, 226, 234, 0.18);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 480px) {
+  .cherry-tip {
+    max-width: calc(100vw - 5.5rem);
+    padding: 9px 14px;
+    font-size: 11px;
+    border-radius: 14px;
+    bottom: calc(100% + 12px);
+  }
+  .cherry-tip-arrow {
+    right: 20px;
+    bottom: -5px;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ---------- Chat window ---------- */
+
+.cherry-window {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  width: min(402px, calc(100vw - 2rem));
+  height: min(640px, calc(100dvh - 2rem));
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+}
+
+.cherry-window-border {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  border-radius: 28px;
+  padding: 1.5px;
+  background: linear-gradient(
+    140deg,
+    rgba(76, 111, 255, 0.75),
+    rgba(182, 0, 168, 0.75) 45%,
+    rgba(190, 76, 0, 0.35)
+  );
+  box-shadow: 0 0 44px rgba(118, 33, 176, 0.35), 0 24px 70px rgba(0, 0, 0, 0.6);
+}
+
+.cherry-window-inner {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 27px;
+  overflow: hidden;
+  background: rgba(12, 12, 12, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+@media (max-width: 767px) {
+  .cherry-window {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+  }
+  .cherry-window-border {
+    border-radius: 0;
+    padding: 0;
+  }
+  .cherry-window-inner {
+    border-radius: 0;
+  }
+}
+
+.cherry-header-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.cherry-footer-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 6px);
+}
+@media (min-width: 768px) {
+  .cherry-header-safe,
+  .cherry-footer-safe {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Body scroll lock while the full-screen mobile chat is open */
+@media (max-width: 767px) {
+  body.cherry-lock {
+    overflow: hidden;
+  }
+}
+
+/* ---------- Scrollbars ---------- */
+
+.cherry-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(118, 33, 176, 0.55) transparent;
+}
+.cherry-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.cherry-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cherry-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4c6fff, #b600a8);
+  border-radius: 9999px;
+}
+
+.cherry-scroll-x {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.cherry-scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes cherry-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes cherry-ping {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  75%,
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+@keyframes cherry-glow {
+  0%,
+  100% {
+    box-shadow: 0 10px 30px rgba(76, 111, 255, 0.35), 0 0 26px rgba(182, 0, 168, 0.45),
+      0 0 40px rgba(94, 118, 255, 0.22);
+  }
+  50% {
+    box-shadow: 0 10px 34px rgba(76, 111, 255, 0.5), 0 0 40px rgba(182, 0, 168, 0.65),
+      0 0 58px rgba(94, 118, 255, 0.35);
+  }
+}
+
+@keyframes cherry-dot-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+  }
+  60% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+}
+
+.cherry-online-dot {
+  animation: cherry-dot-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes cherry-blink {
+  0%,
+  93%,
+  100% {
+    transform: scaleY(1);
+  }
+  96.5% {
+    transform: scaleY(0.12);
+  }
+}
+
+.cherry-bot-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cherry-blink 4.4s ease-in-out infinite;
+}
+
+@keyframes cherry-typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+.cherry-typing-dot {
+  animation: cherry-typing 1.1s ease-in-out infinite;
+}
+.cherry-typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.cherry-typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes cherry-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cherry-card-anim {
+  animation: cherry-fade-up 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+/* Typewriter caret */
+.cherry-caret::after {
+  content: '▍';
+  color: #8fa0ff;
+  animation: cherry-caret-blink 0.8s steps(1) infinite;
+  margin-left: 1px;
+}
+@keyframes cherry-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}

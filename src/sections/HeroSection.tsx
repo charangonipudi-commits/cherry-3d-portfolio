@@ -69,7 +69,7 @@ export default function HeroSection() {
             className="max-w-[160px] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]"
             style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
           >
-            a 3d creator driven by crafting striking and unforgettable projects
+            BUILDING DIGITAL EXPERIENCES THAT TURN YOUR IDEAS INTO REALITY.
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>

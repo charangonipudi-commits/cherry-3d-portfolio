@@ -3,12 +3,10 @@ interface ContactButtonProps {
 }
 
 export default function ContactButton({ className = '' }: ContactButtonProps) {
-  const WHATSAPP_URL = 'https://wa.me/919951880181';
-
   return (
     <button
       type="button"
-      onClick={() => window.open(WHATSAPP_URL, '_blank', 'noopener,noreferrer')}
+      onClick={() => window.dispatchEvent(new CustomEvent('cherry:open-contact'))}
       className={`rounded-full px-8 py-3 text-xs font-medium uppercase tracking-widest text-white transition-opacity duration-200 hover:opacity-90 sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base ${className}`}
       style={{
         background:

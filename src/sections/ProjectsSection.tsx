@@ -282,8 +282,8 @@ export default function ProjectsSection() {
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-[#8FA0FF] sm:text-xs">
               Example Projects
             </p>
-            <h2 className="hero-heading mt-3 font-black uppercase leading-none tracking-tight text-[clamp(2.5rem,10vw,7.5rem)] sm:mt-4">
-              What You Can Build
+            <h2 className="hero-heading text-balance mt-3 font-black uppercase leading-none tracking-tight text-[clamp(2.5rem,10vw,7.5rem)] sm:mt-4">
+              WHAT I CAN BUILD FOR YOU
             </h2>
             <p className="mx-auto mt-5 max-w-xl font-light leading-relaxed text-[#D7E2EA]/70 text-[clamp(0.85rem,1.6vw,1.1rem)]">
               Real examples of what you can get built with my Customized

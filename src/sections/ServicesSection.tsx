@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import FadeIn from '../components/FadeIn';
 
-const WHATSAPP_NUMBER = '919951880181';
-
 const BRAND_GRADIENT =
   'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)';
 
@@ -86,10 +84,6 @@ interface ServiceCardProps {
 }
 
 function ServiceCard({ service, index }: ServiceCardProps) {
-  const orderUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `Hi Cherry! I'd like to order the ${service.name} (${service.discountedPrice}, 50% OFF).`
-  )}`;
-
   return (
     <FadeIn y={50} delay={index * 0.15} className="h-full">
       <motion.div
@@ -170,10 +164,9 @@ function ServiceCard({ service, index }: ServiceCardProps) {
             ))}
           </ul>
 
-          <motion.a
-            href={orderUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent('cherry:open-contact'))}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.2, ease: EASE }}
@@ -187,7 +180,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
             }}
           >
             {service.ctaLabel}
-          </motion.a>
+          </motion.button>
         </div>
       </motion.div>
     </FadeIn>

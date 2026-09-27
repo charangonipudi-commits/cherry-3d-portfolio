@@ -6,18 +6,24 @@ import RoadmapSection from './sections/RoadmapSection';
 import TrustSection from './sections/TrustSection';
 import ProjectsSection from './sections/ProjectsSection';
 import ContactCtaSection from './sections/ContactCtaSection';
+import CherryAI from './components/cherry-ai/CherryAI';
+import ContactModal from './components/ContactModal';
 
 export default function App() {
   return (
-    <main className="bg-[#0C0C0C]" style={{ overflowX: 'clip' }}>
-      <HeroSection />
-      <MarqueeSection />
-      <AboutSection />
-      <ServicesSection />
-      <RoadmapSection />
-      <TrustSection />
-      <ProjectsSection />
-      <ContactCtaSection />
-    </main>
+    <>
+      <main className="bg-[#0C0C0C]" style={{ overflowX: 'clip' }}>
+        <HeroSection />
+        <MarqueeSection />
+        <AboutSection />
+        <ServicesSection />
+        <RoadmapSection />
+        <TrustSection />
+        <ProjectsSection />
+        <ContactCtaSection />
+      </main>
+      <CherryAI />
+      <ContactModal />
+    </>
   );
 }
